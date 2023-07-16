@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "529364134737",
+    "project_id": "advancechatapp-841c4",
+    "storage_bucket": "advancechatapp-841c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:529364134737:android:c401f2402c1b95aa284170",
+        "android_client_info": {
+          "package_name": "com.example.advancechatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "529364134737-c3igaql5s79gp2tn9c5s2bobegvecnlh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBz1n0Pd66T9vUmvGr82gCqi6R9VLQNXPc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "529364134737-c3igaql5s79gp2tn9c5s2bobegvecnlh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
