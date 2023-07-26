@@ -235,7 +235,7 @@ public class MessagesAdapter extends RecyclerView.Adapter {
             viewHolder.binding.message.setText(message.getMessage());
 
             if (message.getFeeling() >= 0) {
-                message.setFeeling(reactions[message.getFeeling()]);
+//                message.setFeeling(reactions[message.getFeeling()]);
                 viewHolder.binding.feeling.setImageResource(reactions[message.getFeeling()]);
                 viewHolder.binding.feeling.setVisibility(View.VISIBLE);
             } else {

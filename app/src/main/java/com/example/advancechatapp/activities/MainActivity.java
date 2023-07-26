@@ -104,20 +104,15 @@ public class MainActivity extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
 
-        FirebaseMessaging.getInstance()
-                .getToken()
-                .addOnSuccessListener(new OnSuccessListener<String>() {
-                    @Override
-                    public void onSuccess(String token) {
-                        HashMap<String, Object> map = new HashMap<>();
-                        map.put("token", token);
-                        database.getReference()
-                                .child("users")
-                                .child(FirebaseAuth.getInstance().getUid())
-                                .updateChildren(map);
-                        //Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
-                    }
-                });
+        FirebaseMessaging.getInstance().getToken().addOnSuccessListener(new OnSuccessListener<String>() {
+            @Override
+            public void onSuccess(String token) {
+                HashMap<String, Object> map = new HashMap<>();
+                map.put("token", token);
+                database.getReference().child("users").child(FirebaseAuth.getInstance().getUid()).updateChildren(map);
+                //Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
         dialog = new ProgressDialog(this);
@@ -128,18 +123,17 @@ public class MainActivity extends AppCompatActivity {
         users = new ArrayList<>();
         userStatuses = new ArrayList<>();
 
-        database.getReference().child("users").child(FirebaseAuth.getInstance().getUid())
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        user = snapshot.getValue(User.class);
-                    }
+        database.getReference().child("users").child(FirebaseAuth.getInstance().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                user = snapshot.getValue(User.class);
+            }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-                    }
-                });
+            }
+        });
 
 
         usersAdapter = new UsersAdapter(this, users);
@@ -161,8 +155,7 @@ public class MainActivity extends AppCompatActivity {
                 users.clear();
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     User user = snapshot1.getValue(User.class);
-//                    if (!user.getUid().equals(FirebaseAuth.getInstance().getUid()))
-                    users.add(user);
+                    if (!user.getUid().equals(FirebaseAuth.getInstance().getUid())) users.add(user);
 
                 }
 //                binding.recyclerView.hideShimmerAdapter();
@@ -254,16 +247,9 @@ public class MainActivity extends AppCompatActivity {
                                     String imageUrl = uri.toString();
                                     Status status = new Status(imageUrl, userStatus.getLastUpdated());
 
-                                    database.getReference()
-                                            .child("stories")
-                                            .child(FirebaseAuth.getInstance().getUid())
-                                            .updateChildren(obj);
+                                    database.getReference().child("stories").child(FirebaseAuth.getInstance().getUid()).updateChildren(obj);
 
-                                    database.getReference().child("stories")
-                                            .child(FirebaseAuth.getInstance().getUid())
-                                            .child("statuses")
-                                            .push()
-                                            .setValue(status);
+                                    database.getReference().child("stories").child(FirebaseAuth.getInstance().getUid()).child("statuses").push().setValue(status);
 
                                     dialog.dismiss();
                                 }
