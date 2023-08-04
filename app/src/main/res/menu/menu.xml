@@ -10,9 +10,9 @@
         android:icon="@drawable/status"
         android:title="Status" />
     <item
-        android:id="@+id/calls"
-        android:icon="@drawable/phonecall"
-        android:title="Calls" />
+        android:id="@+id/shorts"
+        android:icon="@drawable/shorts_play"
+        android:title="Shorts" />
 
 
 </menu>

@@ -5,5 +5,5 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.AdvanceChatApp" parent="Base.Theme.AdvanceChatApp" />
+    <style name="Theme.AdvanceChatApp" parent="Theme.Material3.DynamicColors.DayNight" />
 </resources>

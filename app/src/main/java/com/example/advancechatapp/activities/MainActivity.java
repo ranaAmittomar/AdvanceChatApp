@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
 
+        getSupportActionBar().show();
 //        FirebaseRemoteConfig mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
 //        FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
 //                .setMinimumFetchIntervalInSeconds(0)
@@ -214,6 +215,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        binding.bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId() == R.id.shorts) {
+                    Intent intent = new Intent(MainActivity.this, Shorts_play_page.class);
+                    startActivity(intent);
+                }
+                return false;
+            }
+        });
+
     }
 
     @Override
@@ -284,11 +296,15 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Search clicked.", Toast.LENGTH_SHORT).show();
         } else if (itemId == R.id.settings) {
             Toast.makeText(this, "Settings Clicked.", Toast.LENGTH_SHORT).show();
+        } else if (itemId == R.id.logout) {
+            Toast.makeText(this, "Logout Clicked.", Toast.LENGTH_SHORT).show();
+
         }
         return super.onOptionsItemSelected(item);
     }
 
     @Override
+
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.topmenu, menu);
         return super.onCreateOptionsMenu(menu);
